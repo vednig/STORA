@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app.brand.title }} | Dashboard </title>
+</head>
+<body data-theme="fantasy">
+    <!--
+        Styling Tags
+    -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.25.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+    <!-- All components in one -->
+    <script src="https://cdn.jsdelivr.net/npm/kutty@latest/dist/kutty.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.7.4/smooth-scrollbar.js" integrity="sha512-s+Za9YjKdWb7RODdRba1tjg+6RqPPnB+c7mQywwtdvn59eZYNI53pLOsTp1M7dkznKcWw45tq6xAHh/i1kvL6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!--
+        Basic Encryption Scripts
+    -->
+    <section class="min-h-screen bg-gray-50" x-data="{ sideBar: false }">
+        <nav id='menu'
+          class="fixed top-0 left-0 z-20 h-full pb-10 overflow-x-hidden overflow-y-auto transition origin-left transform bg-white border-r w-60 md:translate-x-0"
+          :class="{ '-translate-x-full' : !sideBar, 'translate-x-0' : sideBar }" @click.away="sideBar = false">
+          <a href="/" class="flex items-center px-4 py-5">
+            <img src="https://i.ibb.co/ckhZJwT/image.png" alt="Kutty Logo" class="w-20" />
+          </a>
+          <nav class="text-sm font-medium text-gray-600" aria-label="Main Navigation">
+            <a class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+              href="/recent">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="24" height="24"
+viewBox="0 0 172 172" class="shrink-0 w-5 h-5 mr-2 text-gray-400 transition group-hover:text-gray-600"
+style=" fill:#a52b2b;"><g fill="none" fill-rule="none" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none" fill-rule="nonzero" stroke="none"></path><g id="original-icon" fill="#ff0000" fill-rule="nonzero" stroke="none" opacity="0" visibility="hidden"><path d="M28.66667,136.16667v-100.33333c0,-11.87517 9.62483,-21.5 21.5,-21.5h50.16667l43,43v78.83333c0,11.87517 -9.62483,21.5 -21.5,21.5h-71.66667c-11.87517,0 -21.5,-9.62483 -21.5,-21.5z" opacity="0.35"></path><path d="M100.33333,43v-28.66667l43,43h-28.66667c-7.91917,0 -14.33333,-6.41417 -14.33333,-14.33333z"></path></g><g id="subtracted-icon" fill="#ff0000" fill-rule="nonzero" stroke="none"><path d="M28.66667,136.16667v-100.33333c0,-11.87517 9.62483,-21.5 21.5,-21.5h50.16667l43,43l0,54.23766c-2.66918,0.96856 -5.09194,2.45673 -7.16667,4.32476c-3.81267,-3.43283 -8.80067,-5.58283 -14.33333,-5.58283c-11.87517,0 -21.5,9.62483 -21.5,21.5c0,6.07017 2.537,11.53117 6.579,15.437c0.01751,0.01751 5.15104,5.16131 10.39598,10.41675h-67.14165c-11.87517,0 -21.5,-9.62483 -21.5,-21.5z" opacity="0.35"></path><path d="M114.66667,57.33333h28.66667l-43,-43v28.66667c0,7.91917 6.41417,14.33333 14.33333,14.33333z"></path></g><g fill="#ff0000" fill-rule="evenodd" stroke="none"><g id="Layer_1"><path d="M172,131.81292c0,-11.87517 -9.62483,-21.5 -21.5,-21.5c-5.53267,0 -10.52067,2.15 -14.33333,5.58283c-3.81267,-3.43283 -8.80067,-5.58283 -14.33333,-5.58283c-11.87517,0 -21.5,9.62483 -21.5,21.5c0,6.07017 2.537,11.53117 6.579,15.437c0.03583,0.03583 21.49283,21.53583 21.49283,21.53583c4.28567,4.28567 11.23017,4.28567 15.51583,0c0,0 21.457,-21.5 21.49283,-21.53583c4.04917,-3.90583 6.58617,-9.36683 6.58617,-15.437z"></path></g><g id="Layer_1" opacity="0"><path d="M172,131.81292c0,-11.87517 -9.62483,-21.5 -21.5,-21.5c-5.53267,0 -10.52067,2.15 -14.33333,5.58283c-3.81267,-3.43283 -8.80067,-5.58283 -14.33333,-5.58283c-11.87517,0 -21.5,9.62483 -21.5,21.5c0,6.07017 2.537,11.53117 6.579,15.437c0.03583,0.03583 21.49283,21.53583 21.49283,21.53583c4.28567,4.28567 11.23017,4.28567 15.51583,0c0,0 21.457,-21.5 21.49283,-21.53583c4.04917,-3.90583 6.58617,-9.36683 6.58617,-15.437z"></path></g></g><path d="M100.33333,172v-61.68708h71.66667v61.68708z" id="overlay-drag" fill="#ff0000" fill-rule="nonzero" stroke="none" opacity="0"></path></g></svg>            
+<span>Recent Files</span>
+
+</a>
+            
+            <a class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+              href="/search">
+              <svg class="shrink-0 w-5 h-5 mr-2 text-gray-400 transition group-hover:text-gray-600"
+            xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="24" height="24"
+              viewBox="0 0 172 172"
+              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#1abc9c"><path d="M153.467,133.19967c-2.05683,-2.05683 -13.91767,-13.91767 -20.07383,-20.07383c-5.15283,8.18433 -12.083,15.1145 -20.26733,20.26733c6.15617,6.15617 18.017,18.017 20.07383,20.07383c5.59717,5.59717 14.67017,5.59717 20.26733,0c5.59717,-5.59717 5.59717,-14.67017 0,-20.26733z"></path><circle cx="11" cy="11" transform="scale(7.16667,7.16667)" r="9" opacity="0.35"></circle></g></g></svg>              <span>Search</span>
+            </a>
+            <a class="flex items-center px-4 py-3 transition bg-white cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+              href="/albums">
+              <svg class="shrink-0 w-5 h-5 mr-2 text-blue-600 transition group-hover:text-blue-600"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+              </svg>
+              <span>Collections</span>
+            </a>
+            <a class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+              href="/bin">
+              <svg class="shrink-0 w-5 h-5 mr-2 text-gray-400 transition group-hover:text-gray-600"
+            xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="24" height="24"
+              viewBox="0 0 172 172"
+              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#cccccc"><path d="M143.29033,29.455c0.473,-4.24267 -2.85233,-7.955 -7.12367,-7.955h-100.33333c-4.27133,0 -7.59667,3.71233 -7.12367,7.955l11.06533,99.545h92.45z" opacity="0.35"></path><path d="M61.404,150.5h49.192c10.95783,0 20.15983,-8.2345 21.371,-19.12783l0.258,-2.37217h-92.45l0.26517,2.37217c1.204,10.89333 10.406,19.12783 21.36383,19.12783z"></path><path d="M61.2535,108.18083l-7.30283,-14.61283c-2.2575,-4.52217 -1.376,-9.976 2.20017,-13.55217l18.361,-18.361c2.236,-2.236 5.96267,-1.8705 7.7185,0.76683l7.5895,11.38783c2.09267,3.139 5.6115,5.02383 9.38117,5.02383h13.25833c4.00617,0 6.39267,4.46483 4.171,7.79733l-7.84033,11.7605c-0.8385,1.2685 -1.29,2.752 -1.29,4.2785v6.98033c0,2.76633 -2.24317,5.01667 -5.01667,5.01667h-30.73067c-4.44333,0 -8.50683,-2.5155 -10.49917,-6.48583zM92.32817,52.49583l4.99517,7.49633c1.88483,2.8165 5.04533,4.50783 8.428,4.50783h7.42467c2.7305,0 5.06683,-1.94933 5.56133,-4.62967l1.4835,-8.0625c0.8385,-4.58667 -2.68033,-8.80783 -7.33867,-8.80783h-15.47283c-4.87333,0 -7.783,5.4395 -5.08117,9.49583z"></path></g></g></svg>
+              <span>Bin</span>
+            </a>
+            <div x-data="collapse()">
+              <div
+                class="flex items-center justify-between px-4 py-3 transition cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+                role="button" x-spread="trigger">
+                <div class="flex items-center">
+                  <svg class="shrink-0 w-5 h-5 mr-2 text-gray-400 transition group-hover:text-gray-600"
+                  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="24" height="24"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#9b59b6"><path d="M136.16667,143.33333h-100.33333c-11.87517,0 -21.5,-9.62483 -21.5,-21.5v-86h121.83333c11.87517,0 21.5,9.62483 21.5,21.5v64.5c0,11.87517 -9.62483,21.5 -21.5,21.5z" opacity="0.35"></path><path d="M78.83333,35.83333h-64.5v-7.16667c0,-7.91917 6.41417,-14.33333 14.33333,-14.33333h32.66567c6.1705,0 11.64583,3.94883 13.59517,9.804z"></path></g></g></svg>
+                  <span>Folders</span>
+                </div>
+                <svg :class="{ 'rotate-90': open }" class="shrink-0 w-4 h-4 ml-2 transition transform"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="mb-4" x-spread="collapse" x-cloak>
+                <a class="flex items-center py-2 pl-12 pr-4 transition cursor-pointer hover:bg-gray-100 hover:text-gray-900"
+                  href="?fldr=Whatsapp">Whatsapp</a>
+                <a class="flex items-center py-2 pl-12 pr-4 transition cursor-pointer hover:bg-gray-100 hover:text-gray-900"
+                  href="?fldr=Camera">Camera</a>
+                <a class="flex items-center py-2 pl-12 pr-4 transition cursor-pointer hover:bg-gray-100 hover:text-gray-900"
+                  href="?fldr=Downloads">Downloads</a>
+              </div>
+            </div>
+            <a class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+              href="#">
+              <svg class="shrink-0 w-5 h-5 mr-2 text-gray-200 transition group-hover:text-yellow-300"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z"
+                  clip-rule="evenodd" />
+                <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z" />
+              </svg>
+              <span>Changelog</span>
+            </a>
+            <a class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+              href="#">
+              <svg class="shrink-0 w-5 h-5 mr-2 text-gray-400 transition group-hover:text-gray-600"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+<path d="M16,18.928c0.678-0.391,1.459-0.424,2.135-0.164c0.564,0.217,1.209,0.037,1.592-0.43	c0.683-0.833,1.234-1.778,1.621-2.805c0.221-0.587,0.012-1.232-0.467-1.638C20.342,13.437,20,12.761,20,12	c0-0.761,0.342-1.437,0.88-1.893c0.479-0.406,0.689-1.05,0.467-1.638c-0.387-1.026-0.937-1.972-1.621-2.805	c-0.383-0.467-1.028-0.647-1.592-0.43C17.459,5.496,16.678,5.463,16,5.072c-0.68-0.393-1.1-1.056-1.21-1.775	c-0.09-0.588-0.556-1.058-1.143-1.158C13.111,2.048,12.561,2,12,2s-1.111,0.048-1.647,0.139C9.766,2.239,9.301,2.709,9.21,3.297	C9.1,4.016,8.68,4.679,8,5.072C7.322,5.463,6.541,5.496,5.865,5.235c-0.564-0.217-1.209-0.037-1.592,0.43	C3.59,6.498,3.04,7.443,2.653,8.47C2.431,9.057,2.641,9.702,3.12,10.107C3.658,10.563,4,11.239,4,12c0,0.761-0.342,1.437-0.88,1.893	c-0.479,0.406-0.689,1.05-0.467,1.638c0.387,1.026,0.937,1.972,1.621,2.805c0.383,0.467,1.028,0.647,1.592,0.43	C6.541,18.504,7.322,18.537,8,18.928c0.68,0.393,1.1,1.056,1.21,1.775c0.09,0.588,0.556,1.058,1.143,1.158	C10.889,21.952,11.439,22,12,22s1.111-0.048,1.647-0.139c0.587-0.099,1.053-0.569,1.143-1.158C14.9,19.984,15.32,19.321,16,18.928z" opacity=".35"></path><path d="M12,8c-2.209,0-4,1.791-4,4s1.791,4,4,4s4-1.791,4-4S14.209,8,12,8z"></path>  </svg>
+              <span>Settings</span>
+            </a>
+            
+    
+  <div class="flex transition mx-3 w-30 cursor-pointer group hover:bg-gray-100 hover:text-gray-900 border stats border-base-300">
+    <div class="stat">
+
+      <div class="stat-value font-light">4.9/128 GB</div> 
+      <div class="stat-title">Storage Used</div> 
+      <div class="stat-desc">
+        <progress value="60" max="100" class="progress progress-primary"></progress>
+      </div>
+    </div>
+  </div>
+  
+          </nav>
+        </nav>
+        <div id='gallery' data-scrollbar class="ml-0 transition md:ml-60">
+          <header data-scrollbar class="flex items-center justify-between w-full px-4 bg-white border-b h-14">
+                <button class="block btn btn-light bg-gray-300 border-gray-300 md:hidden" @click.stop="sideBar = true">
+                <span class="sr-only">Menu</span><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentcolor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4A1 1 0 013 5zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                </button>
+
+          </header>
+          <div class="p-4">
+            <!-- Add content here, remove div below -->
+            <div class="overflow rounded min-h-screen">
+
+                {% block content %}
+                {% endblock %}
+                
+            </div>                   
+            
+          </div>
+        </div>
+      
+        <!-- Sidebar Backdrop -->
+        <div class="fixed inset-0 z-10 w-screen h-screen bg-black bg-opacity-25 md:hidden" x-show.transition="sideBar"
+          x-cloak></div>
+      </section>
+      <script>
+        var Scrollbar = window.Scrollbar;
+        var menuScrollbar = document.getElementById('menu')
+        Scrollbar.init(menuScrollbar);
+        var Scrollbar2 = window.Scrollbar;
+        var galleryScrollbar = document.getElementById('gallery')
+        Scrollbar2.init(galleryScrollbar);
+        
+    </script>
+   
+</body>
+</html>
