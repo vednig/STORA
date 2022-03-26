@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Load FilePond library -->
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+</head>
+<body>
+    <input type="file" name='upload' class="filepond"/>
+    <button onclick="upl()">Upload</button>
+    {% csrf_token %}
+
+    <script>
+    async function upl() {
+    const input = document.querySelector('input[type="file"]');
+    const file = input.files[0];
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    file instanceof File; // true
+    file instanceof Blob; // true
+    const formData = new FormData();
+formData.append('upload', file);
+console.log(formData)
+// Post the form, just make sure to set the 'Content-Type' header
+const res = await axios.post('/upload', formData, {
+  headers: {
+    'Content-Type': 'multipart/form-data',
+    'X-CSRFToken': csrftoken
+  }
+}).then(function (response) {
+    console.log(response.data);
+    console.log(response.status);
+    console.log(response.statusText);
+    console.log(response.headers);
+    console.log(response.config);
+  });;
+    }
+
+</script>
+
+  <!-- Turn all file input elements into ponds -->
+  <script>
+  FilePond.parse(document.body);
+  </script>
+
+    
+</body>
+</html>
